@@ -10,6 +10,7 @@ LOG_FILE=$LOG_DIR/`date "+%Y-%m-%d"`.log
 if [ ! -f $LOG_FILE ];then
   touch $LOG_FILE
 fi
+echo "===================="`date +%Y-%m-%dT%H:%M:%S`"====================" | tee -a $LOG_FILE
 
 # looking for the dir to be sync
 if [ ! $AUTO_SYNC_DIR ];then
@@ -21,6 +22,5 @@ echo "sync dir: " $AUTO_SYNC_DIR
 # sync and log
 pushd $AUTO_SYNC_DIR
 echo "note dir: " $AUTO_SYNC_DIR | tee -a $LOG_FILE
-echo "===================="`date +%Y-%m-%dT%H:%M:%S`"====================" | tee -a $LOG_FILE
 $SCRIPT_DIR/git-sync sync | tee -a $LOG_FILE 
 popd
