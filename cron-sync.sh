@@ -6,10 +6,11 @@ SCRIPT_DIR=$(dirname $(realpath $0))
 LOG_DIR=$SCRIPT_DIR/log
 echo $LOG_DIR
 mkdir -p $LOG_DIR
-LOG_FILE=$LOG_DIR/`date "+%Y-%m-%d"`.log
+LOG_FILE=$LOG_DIR/`date "+%Y-%m"`.log
 if [ ! -f $LOG_FILE ];then
   touch $LOG_FILE
 fi
+echo "" | tee -a $LOG_FILE
 echo "===================="`date +%Y-%m-%dT%H:%M:%S`"====================" | tee -a $LOG_FILE
 
 # looking for the dir to be sync
