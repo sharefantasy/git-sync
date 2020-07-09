@@ -2,11 +2,15 @@
 set -Ce
 
 # setup logging dir
+if [ ! $PROJECT_NAME ];then
+  PROJECT_NAME="common"
+fi
+
 SCRIPT_DIR=$(dirname $(realpath $0))
 LOG_DIR=$SCRIPT_DIR/log
 echo $LOG_DIR
 mkdir -p $LOG_DIR
-LOG_FILE=$LOG_DIR/`date "+%Y-%m"`.log
+LOG_FILE=$LOG_DIR/$PROJECT_NAME-`date "+%Y-%m"`.log
 if [ ! -f $LOG_FILE ];then
   touch $LOG_FILE
 fi
